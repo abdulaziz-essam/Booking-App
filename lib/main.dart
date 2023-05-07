@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         routes: {
           // When navigating to the "/" route, build the FirstScreen widget.
           '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
-        '/second':(context) => payment.MyApp(),
+        '/second':(context) => payment.MySample(),
         }
       ,
       theme: ThemeData(
