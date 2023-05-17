@@ -1,82 +1,56 @@
-import 'package:book_my_seat/book_my_seat.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 
-class MyAppBar extends StatelessWidget {
-  const MyAppBar({required this.title, super.key});
+List<String> imagePaths = [
+  "../assets/armchair.png",
 
-  // Fields in a Widget subclass are always marked "final".
+];
 
-  final Widget title;
+class ImageCardScreenEfficient extends StatelessWidget {
+  List<Widget> renderImages() {
+    var temp = <Widget>[];
+    for (var i=0;i<15;i++) {
+      // add some conditional logic here
+
+        temp.add(Image.asset('../assets/armchair.png',
+            height: 44,
+            scale: 2.5,
+            // color: Color.fromARGB(255, 15, 147, 59),
+            opacity:
+            const AlwaysStoppedAnimation<double>(0.5)),
+          // imagePath: "../assets/armchair.png",
+        );
+
+    }
+    return temp;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Image Cards Efficient "),
+      ),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: renderImages(),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ImageCard extends StatelessWidget {
+  final String imagePath;
+
+  ImageCard({required this.imagePath});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 56.0, // in logical pixels
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      decoration: BoxDecoration(color: Colors.blue[500]),
-      // Row is a horizontal, linear layout.
-      child: Row(
-        children: [
-          const IconButton(
-            icon: Icon(Icons.menu),
-            tooltip: 'Navigation menu',
-            onPressed: null, // null disables the button
-          ),
-          // Expanded expands its child
-          // to fill the available space.
-          Expanded(
-            child: title,
-          ),
-          const IconButton(
-            icon: Icon(Icons.search),
-            tooltip: 'Search',
-            onPressed: null,
-          ),
-        ],
-      ),
+      padding: EdgeInsets.all(10.0),
+      child: Image.asset(imagePath),
     );
   }
-}
-
-class MyScaffold extends StatelessWidget {
-  const MyScaffold({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // Material is a conceptual piece
-    // of paper on which the UI appears.
-    return Material(
-      // Column is a vertical, linear layout.
-      child: Column(
-        children: [
-          MyAppBar(
-            title: Text(
-              'Example title',
-              style: Theme.of(context) //
-                  .primaryTextTheme
-                  .titleLarge,
-            ),
-          ),
-          const Expanded(
-            child: Center(
-              child: Text('AEK Booking App'),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-void main() {
-  runApp(
-    const MaterialApp(
-      title: 'My app', // used by the OS task switcher
-      home: SafeArea(
-        child: MyScaffold(),
-      ),
-    ),
-  );
 }

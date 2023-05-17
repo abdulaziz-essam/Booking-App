@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import "./landingPage/landing_Page_Widget.dart" ;
-import "./book_my_seat/my_seat.dart";
+import "./book_my_seat/my_seat.dart" as book;
 import "./ticket/ticket.dart" as ticket;
 import "./payment/payment.dart" as payment;
 void main() {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         routes: {
           // When navigating to the "/" route, build the FirstScreen widget.
           '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
-        '/second':(context) => payment.MySample(),
+        '/second':(context) => book.ImageCardScreenEfficient(),
         }
       ,
       theme: ThemeData(
